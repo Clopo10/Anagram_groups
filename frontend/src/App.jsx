@@ -1,6 +1,7 @@
 import { useState } from "react";
 import Navbar from "./components/Navbar";
 import RequestPanel from "./components/RequestPanel";
+import ResultPanel from "./components/ResultPanel";
 
 export default function App() {
   // Memory for toggle switch
@@ -22,9 +23,7 @@ export default function App() {
       <main className="flex-1 flex flex-col-reverse md:flex-row overflow-hidden">
         {/* Left Column: Results Area */}
         <div className="flex-1 p-6 md:p-8 flex flex-col overflow-hidden">
-          <div className="flex-1 border-4 border-black border-dashed rounded-xl flex flex-col items-center justify-center font-black text-black/40 text-2xl text-center space-y-4">
-            <span>RESULT PANEL</span>
-          </div>
+          <ResultPanel results={[]} />
         </div>
 
         {/* The desktop divider line */}

@@ -17,7 +17,7 @@ export default function Navbar({ mode, setMode }) {
           className={`w-10 h-10 hidden sm:block transition-colors ${mode === "SORT" ? "text-[#ba321c]" : "text-[#de845a]"}`}
         />
 
-        <div className="flex bg-transparent border-2 border-black rounded-full overflow-clip font-bold shadow-[2px_2px_0px_rgba(0,0,0,1)]">
+        <div className="flex bg-transparent border-4 border-black rounded-full overflow-clip font-bold shadow-[2px_2px_0px_rgba(0,0,0,1)]">
           <button
             onClick={() => setMode("SORT")}
             className={`px-4 sm:px-6 py-1 transition-colors ${mode === "SORT" ? "bg-[#ba321c] text-[#de845a] text-2xl" : "text-black text-2xl hover:bg-black/10"}`}
