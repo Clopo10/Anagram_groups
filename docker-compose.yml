@@ -11,3 +11,20 @@ services:
 
     environment:
       - ENVIRONMENT=development
+
+  frontend:
+    build:
+      context: ./frontend
+
+    ports:
+      - "5173:5173"
+
+    volumes:
+      - ./frontend:/app
+      - /app/node_modules
+
+    environment:
+      - WATCHPACK_POLLING=true
+
+    depends_on:
+      - backend
