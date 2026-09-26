@@ -14,7 +14,7 @@ export default function Navbar({ mode, setMode }) {
       <div className="flex items-center justify-center gap-3 flex-none">
         <Filter
           strokeWidth={3}
-          className={`w-6 h-6 hidden sm:block transition-colors ${mode === "SORT" ? "text-[#ba321c]" : "text-[#de845a]"}`}
+          className={`w-10 h-10 hidden sm:block transition-colors ${mode === "SORT" ? "text-[#ba321c]" : "text-[#de845a]"}`}
         />
 
         <div className="flex bg-transparent border-2 border-black rounded-full overflow-clip font-bold shadow-[2px_2px_0px_rgba(0,0,0,1)]">
@@ -38,17 +38,17 @@ export default function Navbar({ mode, setMode }) {
 
         <Search
           strokeWidth={3}
-          className={`w-6 h-6 hidden sm:block transition-colors ${mode === "SEARCH" ? "text-[#ba321c]" : "text-[#de845a]"}`}
+          className={`w-10 h-10 hidden sm:block transition-colors ${mode === "SEARCH" ? "text-[#ba321c]" : "text-[#de845a]"}`}
         />
       </div>
 
       {/* Right: Theme Toggle*/}
       <div className="flex-1 flex justify-end">
         <button
-          className="p-2 border-2 border-transparent hover:border-black rounded-full transition-all hover:bg-black/5"
+          className="-mr-5 sm:mr-0 p-2 border-2 border-transparent hover:border-black rounded-full transition-all hover:bg-black/5"
           title="Change Theme"
         >
-          <Palette strokeWidth={2.5} className="w-6 h-6 text-black" />
+          <Palette strokeWidth={2.5} className="w-10 h-10 text-black" />
         </button>
       </div>
     </nav>
