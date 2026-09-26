@@ -1,6 +1,6 @@
 import { SunDim } from "lucide-react";
 
-export default function ResultPanel({ results = [] }) {
+export default function ResultPanel({ results = [], processingTime }) {
   // Empty state
   if (results.length === 0) {
     return (
@@ -39,6 +39,13 @@ export default function ResultPanel({ results = [] }) {
           </div>
         </div>
       ))}
+
+      {/* Processing Time */}
+      {processingTime !== null && (
+        <div className="text-right pr-2 pt-4 font-black text-black/40 text-sm tracking-widest uppercase">
+          Processed in {processingTime} ms.
+        </div>
+      )}
     </div>
   );
 }
