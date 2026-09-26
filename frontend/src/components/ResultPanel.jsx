@@ -22,7 +22,7 @@ export default function ResultPanel({ results = [], processingTime }) {
 
   // Populated state
   return (
-    <div className="flex-1 overflow-y-auto pr-2 pt-2 space-y-4 pb-4 custom-scrollbar">
+    <div className="flex-1 overflow-y-auto pr-2 pt-2 space-y-4 pb-4">
       {results.map((group, index) => (
         <div
           key={group[0]}

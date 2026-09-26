@@ -3,3 +3,27 @@
 body {
   background-color: #f8fafc;
 }
+
+/* Global Webkit Scrollbar (Chrome, Edge, Safari) */
+::-webkit-scrollbar {
+  width: 6px;
+}
+
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+  background-color: #de845a;
+  border-radius: 10px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background-color: #6a3f3b;
+}
+
+/* Global Firefox Fallback */
+* {
+  scrollbar-width: thin;
+  scrollbar-color: #de845a transparent;
+}
