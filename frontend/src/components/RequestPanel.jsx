@@ -1,7 +1,7 @@
 export default function RequestPanel({ mode, input, setInput, onSubmit }) {
   return (
     <div className="flex flex-col h-full w-full">
-      <label className="text-black font-extrabold text-lg mb-2 tracking-wide">
+      <label className="text-black font-extrabold text-xl mb-2 tracking-wide">
         Input a list of words:
       </label>
 

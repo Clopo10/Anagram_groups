@@ -22,12 +22,23 @@ export default function ResultPanel({ results = [] }) {
 
   // Populated state
   return (
-    <div className="flex-1 overflow-y-auto pr-2 space-y-4">
-      <div className="w-full p-6 bg-[#6a3f3b] text-white rounded-lg border-4 border-black shadow-[4px_4px_0px_rgba(0,0,0,1)]">
-        <h3 className="font-black text-xl tracking-widest">
-          RESULTS COMING SOON
-        </h3>
-      </div>
+    <div className="flex-1 overflow-y-auto pr-2 pt-2 space-y-4 pb-4 custom-scrollbar">
+      {results.map((group, index) => (
+        <div
+          key={group[0]}
+          className="w-full p-5 sm:p-6 bg-[#6a3f3b] text-white rounded-lg border-4 border-black shadow-[4px_4px_0px_rgba(0,0,0,1)] hover:-translate-y-1 hover:shadow-[6px_6px_0px_rgba(0,0,0,1)] transition-all cursor-default"
+        >
+          <div className="flex items-start gap-3 md:gap-4 font-black text-lg md:text-xl tracking-wide">
+            {/* The Number */}
+            <span className="text-[#de845a] drop-shadow-sm min-w-6">
+              {index + 1}
+            </span>
+
+            {/* The Grouped Words */}
+            <span className="leading-relaxed">{group.join(", ")}</span>
+          </div>
+        </div>
+      ))}
     </div>
   );
 }

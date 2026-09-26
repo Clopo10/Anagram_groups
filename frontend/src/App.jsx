@@ -23,7 +23,9 @@ export default function App() {
       <main className="flex-1 flex flex-col-reverse md:flex-row overflow-hidden">
         {/* Left Column: Results Area */}
         <div className="flex-1 p-6 md:p-8 flex flex-col overflow-hidden">
-          <ResultPanel results={[]} />
+          <ResultPanel
+            results={[["eat", "tea", "ate"], ["bat", "tab"], ["carrot"]]}
+          />
         </div>
 
         {/* The desktop divider line */}
