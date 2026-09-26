@@ -10,9 +10,51 @@ export default function App() {
   // Memory for textbox
   const [input, setInput] = useState("");
 
+  //Memory for backend response
+  const [results, setResults] = useState([]);
+
   // Function for the button
-  const handleSubmit = () => {
-    console.log(`Sending ${input} to the backend in ${mode} mode!`);
+  const handleSubmit = async () => {
+    if (!input.trim()) return;
+
+    if (mode === "SORT") {
+      try {
+        // Convert textbox string into clean array for Pydantic
+        const wordsArray = input
+          .split(",")
+          .map((word) => word.trim())
+          .filter((word) => word.length > 0);
+
+        if (wordsArray.length === 0) return;
+
+        // Send the payload
+        const response = await fetch("http://localhost:8000/api/anagrams", {
+          method: "POST",
+          headers: { "Content-type": "application/json" },
+          body: JSON.stringify({ words: wordsArray }),
+        });
+
+        const data = await response.json();
+
+        // Catch FastAPI validation errors
+        if (!response.ok) {
+          console.error("Backend error: ", data.detail);
+          alert(Array.isArray(data.detail) ? data.detail[0].msg : data.detail);
+          return;
+        }
+
+        // Save the grouped results to React's memory
+        setResults(data.groups);
+
+        // Log backend timer
+        console.log(`Processed in ${data.processing_time_ms} ms.`);
+      } catch (error) {
+        console.error("Network error: ", error);
+        alert("Could not connect to the backend server!");
+      }
+    } else {
+      console.log("SEARCH mode coming soon.");
+    }
   };
 
   return (
@@ -23,9 +65,7 @@ export default function App() {
       <main className="flex-1 flex flex-col-reverse md:flex-row overflow-hidden">
         {/* Left Column: Results Area */}
         <div className="flex-1 p-6 md:p-8 flex flex-col overflow-hidden">
-          <ResultPanel
-            results={[["eat", "tea", "ate"], ["bat", "tab"], ["carrot"]]}
-          />
+          <ResultPanel results={results} />
         </div>
 
         {/* The desktop divider line */}
