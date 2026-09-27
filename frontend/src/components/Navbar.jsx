@@ -1,6 +1,11 @@
 import { Filter, Search, Palette } from "lucide-react";
 
-export default function Navbar({ mode, setMode }) {
+export default function Navbar({
+  mode,
+  setMode,
+  setResults,
+  setProcessingTime,
+}) {
   return (
     <nav className="flex items-center justify-between px-6 py-4 bg-[#de845a] border-b-4 border-black">
       {/*Left: Logo*/}
@@ -19,7 +24,11 @@ export default function Navbar({ mode, setMode }) {
 
         <div className="flex bg-transparent border-4 border-black rounded-full overflow-clip font-bold shadow-[2px_2px_0px_rgba(0,0,0,1)]">
           <button
-            onClick={() => setMode("SORT")}
+            onClick={() => {
+              setMode("SORT");
+              setResults([]);
+              setProcessingTime(null);
+            }}
             className={`px-4 sm:px-6 py-1 transition-colors ${mode === "SORT" ? "bg-[#ba321c] text-[#de845a] text-2xl" : "text-black text-2xl hover:bg-black/10"}`}
           >
             SORT
@@ -29,7 +38,11 @@ export default function Navbar({ mode, setMode }) {
           <div className="w-0.5 bg-black"></div>
 
           <button
-            onClick={() => setMode("SEARCH")}
+            onClick={() => {
+              setMode("SEARCH");
+              setResults([]);
+              setProcessingTime(null);
+            }}
             className={`px-4 sm:px-6 py-1 transition-colors ${mode === "SEARCH" ? "bg-[#ba321c] text-[#de845a] text-2xl" : "text-black text-2xl hover:bg-black/10"}`}
           >
             SEARCH

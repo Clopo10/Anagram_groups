@@ -52,13 +52,43 @@ export default function App() {
         alert("Could not connect to the backend server!");
       }
     } else {
-      console.log("SEARCH mode coming soon.");
+      try {
+        // Grab just the first word in case the user typed commas by habit
+        const singleWord = input.split(",")[0].trim();
+        if (!singleWord) return;
+
+        // Send the GET request (Data goes directly in the URL)
+        const response = await fetch(
+          `http://localhost:8000/api/anagrams/${singleWord}`,
+        );
+
+        const data = await response.json();
+
+        // Catch FastAPI errors
+        if (!response.ok) {
+          console.error("Backend error: ", data.detail);
+          alert(data.detail);
+          return;
+        }
+
+        // Wrap the single group array inside another array so it matches SORT's data structure
+        setResults([data.group]);
+        setProcessingTime(data.processing_time_ms);
+      } catch (error) {
+        console.error("Network error: ", error);
+        alert("Could not connect to the backend server!");
+      }
     }
   };
 
   return (
     <div className="h-screen flex flex-col bg-[#eba68a] font-sans selection:bg-[#ba321c] selection:text-white">
-      <Navbar mode={mode} setMode={setMode} />
+      <Navbar
+        mode={mode}
+        setMode={setMode}
+        setResults={setResults}
+        setProcessingTime={setProcessingTime}
+      />
 
       {/* Workspace Area */}
       <main className="flex-1 flex flex-col-reverse md:flex-row overflow-hidden">

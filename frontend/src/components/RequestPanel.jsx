@@ -2,13 +2,15 @@ export default function RequestPanel({ mode, input, setInput, onSubmit }) {
   return (
     <div className="flex flex-col h-full w-full">
       <label className="text-black font-extrabold text-xl mb-2 tracking-wide">
-        Input a list of words:
+        {mode === "SORT" ? "Input a list of words:" : "Input a word:"}
       </label>
 
       <textarea
         value={input}
         onChange={(e) => setInput(e.target.value)}
-        placeholder="eg. eat, tea, bat, carrot, ..."
+        placeholder={
+          mode === "SORT" ? "eg. eat, tea, bat, carrot, ..." : "eg. meat"
+        }
         className="grow w-full bg-[#6a3f3b] text-white p-6 rounded-lg border-4 border-black outline-none focus:ring-4 focus:ring-black/20 resize-none font-medium placeholder-white/60 shadow-[4px_4px_0px_rgba(0,0,0,1)] transition-all mb-8"
         spellCheck="false"
       />
